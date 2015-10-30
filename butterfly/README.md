@@ -6,6 +6,7 @@
 This file is a 64-bit elf,and check some protector.
 
 `
+
 	CANARY    : ENABLED
 
 	FORTIFY   : disabled
@@ -25,6 +26,7 @@ Canary and NX is able,and server have ASLR.
 In this elf,main function is small,It just do something like:
 
 `
+
 	read(buf);
 
 	page = buf & 0xfffffffff000
@@ -39,6 +41,7 @@ In this elf,main function is small,It just do something like:
 I'm not found this value where can controller.But it's OK.In the main function:
 
 `
+
 	400860:	48 83 c4 48          	add    $0x48,%rsp
 	
 	400864:	5b                   	pop    %rbx
