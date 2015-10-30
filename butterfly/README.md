@@ -6,16 +6,15 @@
 This file is a 64-bit elf,and check some protector.
 
 `
-CANARY    : ENABLED
+	CANARY    : ENABLED
 
-FORTIFY   : disabled
+	FORTIFY   : disabled
 
-NX        : ENABLED
+	NX        : ENABLED
 
-PIE       : disabled
+	PIE       : disabled
 
-RELRO     : disabled
-
+	RELRO     : disabled
 `
 
 Canary and NX is able,and server have ASLR.
@@ -27,9 +26,13 @@ In this elf,main function is small,It just do something like:
 
 `
 	read(buf);
+
 	page = buf & 0xfffffffff000
+
 	mprotect(page, 4096, 7);
+
 	buf = "value";
+
 	mprotect(page, 4096, 5);
 `
 
