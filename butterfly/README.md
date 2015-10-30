@@ -5,7 +5,6 @@
 
 This file is a 64-bit elf,and check some protector.
 
-`
 
 	CANARY    : ENABLED
 
@@ -16,7 +15,6 @@ This file is a 64-bit elf,and check some protector.
 	PIE       : disabled
 
 	RELRO     : disabled
-`
 
 Canary and NX is able,and server have ASLR.
 
@@ -25,7 +23,6 @@ Canary and NX is able,and server have ASLR.
 
 In this elf,main function is small,It just do something like:
 
-`
 
 	read(buf);
 
@@ -36,11 +33,9 @@ In this elf,main function is small,It just do something like:
 	buf = "value";
 
 	mprotect(page, 4096, 5);
-`
 
 I'm not found this value where can controller.But it's OK.In the main function:
 
-`
 
 	400860:	48 83 c4 48          	add    $0x48,%rsp
 	
@@ -53,7 +48,6 @@ I'm not found this value where can controller.But it's OK.In the main function:
 	400869:	5d                   	pop    %rbp
 	
 	40086a:	c3                   	retq  
-`
 
 Before exit main function.It will executable this code.
 
